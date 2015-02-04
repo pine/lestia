@@ -1,6 +1,6 @@
 {
   "name": "lestia",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lestia is a library of Message-based RPC that can do callback",
   "main": "index.js",
   "files": [
