@@ -37,7 +37,7 @@ var client = lestia();
 
 ### Set message handler
 
-```
+```js
 client.on('send', function (msg) {
   // Send message code
   SomeMessageAPI.send(msg);
