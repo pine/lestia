@@ -113,6 +113,26 @@ describe('Integration test for lestia', function () {
     expect(on_error).to.have.been.callCount(4);
   });
   
+  it('should some occur errors because function is not found', function (done) {
+    var on_error = sinon.spy();
+    
+    client2.on('error', on_error);
+    
+    var fun_rpc = client1.get('invalid_function_name');
+    fun_rpc();
+    
+    _.defer(function () {
+      try {
+        expect(on_error).to.have.been.calledOnce;
+        done();
+      }
+      
+      catch (e) {
+        done(e);
+      }
+    }, 10);
+  });
+  
   it('should have been called', function (done) {
     var on_error1 = sinon.spy();
     var on_error2 = sinon.spy();
@@ -129,11 +149,16 @@ describe('Integration test for lestia', function () {
     fun_rpc();
     
     _.defer(function() {
-      expect(on_error1).to.not.have.been.called;
-      expect(on_error2).to.not.have.been.called;
-      expect(fun_impl).to.have.been.calledOnce;
+      try {
+        expect(on_error1).to.not.have.been.called;
+        expect(on_error2).to.not.have.been.called;
+        expect(fun_impl).to.have.been.calledOnce;
+        done();
+      }
       
-      done();
+      catch (e) {
+        done(e);
+      }
     });
   });
   
@@ -161,11 +186,16 @@ describe('Integration test for lestia', function () {
     fun_rpc(args);
     
     _.delay(function() {
-      expect(on_error1).to.not.have.been.called;
-      expect(on_error2).to.not.have.been.called;
-      expect(fun_impl).to.have.been.calledWith(args);
+      try {
+        expect(on_error1).to.not.have.been.called;
+        expect(on_error2).to.not.have.been.called;
+        expect(fun_impl).to.have.been.calledWith(args);
+        done();
+      }
       
-      done();
+      catch (e) {
+        done(e);
+      }
     }, 10);
   });
   
@@ -181,8 +211,8 @@ describe('Integration test for lestia', function () {
     
     client1.on('error', on_error1);
     client2.on('error', on_error2);
-    client1.set('test', fun_impl);
     
+    client1.set('test', fun_impl);
     var fun_rpc = client2.get('test');
     
     expect(fun_rpc).to.be.a('function');
@@ -191,12 +221,53 @@ describe('Integration test for lestia', function () {
     fun_rpc(fun_cb);
     
     _.delay(function() {
-      expect(on_error1).to.not.have.been.called;
-      expect(on_error2).to.not.have.been.called;
-      expect(fun_impl).to.have.been.calledTwice;
-      expect(fun_cb).to.always.have.been.calledWith(200, 'ok')
+      try {
+        expect(on_error1).to.not.have.been.called;
+        expect(on_error2).to.not.have.been.called;
+        expect(fun_impl).to.have.been.calledTwice;
+        expect(fun_cb).to.always.have.been.calledWith(200, 'ok');
+        done();
+      }
       
-      done();
+      catch (e) {
+        done(e);
+      }
+    }, 10);
+  });
+  
+  it('should occur some errors because message format is invalid', function (done) {
+    // Destroy message format
+    pipe.removeAllListeners('to_client2');
+    pipe.on('to_client2', function (msg) {
+      msg[1] += '+++ invalid message +++';
+      client2.emit('receive', msg);
+    });
+    
+    var on_error1 = sinon.spy();
+    var on_error2 = sinon.spy();
+    
+    client1.on('error', on_error1);
+    client2.on('error', on_error2);
+    
+    var fun_impl = sinon.spy();
+    client2.set('test', fun_impl);
+    
+    var fun_rpc = client1.get('test');
+    
+    fun_rpc();
+    
+    _.delay(function () {
+      try {
+        expect(on_error1).to.not.have.been.called;
+        expect(on_error2).to.have.been.calledOnce;
+        expect(fun_impl).to.not.have.been.called;
+        
+        done();
+      }
+      
+      catch (e) {
+        done(e);
+      }
     }, 10);
   });
 });
