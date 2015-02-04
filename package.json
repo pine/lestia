@@ -1,0 +1,34 @@
+{
+  "name": "lestia",
+  "version": "1.0.0",
+  "description": "Lestia is a library of Message-based RPC that can do callback",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "LICENSE",
+    "*.md"
+  ],
+  "scripts": {
+    "test": "mocha -R spec test/**/*.js"
+  },
+  "author": {
+    "name": "Pine Mizune",
+    "email": "pinemz@gmail.com",
+    "url": "https://github.com/pine613"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pine613/lestia.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.1.0",
+    "mousse": "^0.3.0"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.6.0"
+  }
+}
