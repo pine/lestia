@@ -8,12 +8,17 @@ Lestia
 
 Lestia is a library of Message-based RPC that can do callback.
 
+## What's this ?
+Lestia is a library of Message-based RPC. It use JSON as function arguments serialized. It can pass function and can do callback!!
+
+![](assets/lestia.png)
+
+
 ## Get started
 
 ```
 $ npm install lestia --save
 ```
-
 
 ## Tests
 
