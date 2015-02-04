@@ -7,7 +7,7 @@ istanbul = require 'gulp-istanbul'
 coveralls = require 'gulp-coveralls'
 
 
-gulp.task 'test', (mochaErr) ->
+gulp.task 'test', (cb) ->
   mochaErr = null
   
   gulp.src ['index.js', 'lib/**/*.js']
@@ -21,7 +21,10 @@ gulp.task 'test', (mochaErr) ->
           mochaErr = err
         .pipe istanbul.writeReports()
         .on 'end', ->
+          console.log 'end'
           cb(mochaErr)
+  
+  undefined
 
 
 gulp.task 'coveralls', ['test'], ->
