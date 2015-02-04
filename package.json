@@ -10,7 +10,7 @@
     "*.md"
   ],
   "scripts": {
-    "test": "mocha -R spec test/**/*.js"
+    "test": "gulp"
   },
   "author": {
     "name": "Pine Mizune",
@@ -28,6 +28,13 @@
   },
   "devDependencies": {
     "chai": "^1.10.0",
+    "coffee-script": "^1.9.0",
+    "gulp": "^3.8.10",
+    "gulp-cli": "^0.1.5",
+    "gulp-coveralls": "^0.1.3",
+    "gulp-istanbul": "^0.6.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-plumber": "^0.6.6",
     "mocha": "^2.1.0",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.6.0"
