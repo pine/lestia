@@ -9,7 +9,7 @@ chai.use(sinonChai);
 var events = require('events');
 var lestia = require('../../');
 
-describe('Integration for lestia', function () {
+describe('Integration test for lestia', function () {
   var pipe;
   var client1, client2;
   
