@@ -7,9 +7,9 @@ var expect = chai.expect;
 chai.use(sinonChai);
 
 var events = require('events');
-var lestia = require('../');
+var lestia = require('../../');
 
-describe('Test for lestia', function () {
+describe('Integration for lestia', function () {
   var pipe;
   var client1, client2;
   
