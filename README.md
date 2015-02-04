@@ -31,6 +31,7 @@ $ npm test
 ### Create new RPC client
 
 ```js
+var lestia = require('lestia');
 var client = lestia();
 
 ```
