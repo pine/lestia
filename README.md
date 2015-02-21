@@ -21,6 +21,7 @@ $ npm install lestia --save
 ```
 
 ## Tests
+There are some tests written by [Mocha](http://mochajs.org), [Chai](http://chaijs.com) and [Sinon.JS](http://sinonjs.org).
 
 ```
 $ npm install
