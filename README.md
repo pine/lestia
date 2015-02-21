@@ -81,4 +81,5 @@ client.on('log', function (log) {
 ```
 
 ## License
-MIT License
+MIT License<br />
+Copyright (c) 2015 Pine Mizune
