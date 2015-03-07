@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "test": "gulp",
-    "coveralls": "coveralls"
+    "coveralls": "coveralls < ./coverage/lcov.info"
   },
   "author": {
     "name": "Pine Mizune",
