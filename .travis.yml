@@ -3,3 +3,7 @@ node_js:
   - '0.10'
   - '0.12'
   - iojs
+
+env:
+  global:
+    - secure: "QDXZvxhZZyxRt5SvLq4p2q6KtZrHprZ42eUALmLUH7DpPGr4G3bsPmFYYIl3s2Z5KXw+TH4Rz5i3wbQwVYKLjgECqJkjuWw2E9uph83TqFX7mkJHfG7sLRIXf9h2DBVbRZBmK1k7nHt5+3QQvQRXZuUzuXGdvJUMyaxZZL2J2Lc="
