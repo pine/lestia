@@ -1,0 +1,3 @@
+ - export COVERALLS_SERVICE_NAME=travis-ci
+ - export COVERALLS_REPO_TOKEN=z6CKA9FArBCWBSjHV557lb5oDxzDa3x2f
+
